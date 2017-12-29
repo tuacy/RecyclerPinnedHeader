@@ -1,11 +1,14 @@
 &#160; &#160; &#160; &#160;列表展示是开发过程中经常用到的功能，通常通过 ListView 或者 RecyclerView 控件来实现。在列表显示的过程中可能会碰到这样的需求：需要对列表进行分组，每个分组都有标题 item view 和内容 item view 而且希望列表在滑动的过程中每个分组的标题 item view 可以一直固定的列表的顶部。之前的博客我们已经通过ListView实现了这一功能，有兴趣的可以参考链接[Android分组悬浮列表实现](http://blog.csdn.net/wuyuxing24/article/details/70477566)。but这一次我们通过 RecyclerView 来实现这一需求。实现过程比 ListView 的实现过程要更加简单。
 
 &#160; &#160; &#160; &#160;在讲怎么实现之前先献上通过RecyclerView实现的效果图
+
 >LinearLayoutManager实现的效果
-![pinnedheader_line.gif](http://upload-images.jianshu.io/upload_images/9182331-02fb5cc589cded18.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align=center>
+![LinearLayoutManager实现效果](http://img.blog.csdn.net/20171229093308200?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3V5dXhpbmcyNA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 >GridLayoutManager实现的效果，要固定在顶部的 item要占据整个一行
-![pinnedheader_grid.gif](http://upload-images.jianshu.io/upload_images/9182331-76d50a9dd3cc53b5.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<div align=center>
+![这里写图片描述](http://img.blog.csdn.net/20171229094035994?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3V5dXhpbmcyNA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 &#160; &#160; &#160; &#160;接下来就是实现过程了
 
@@ -126,4 +129,4 @@ public abstract class PinnedHeaderAdapter<VH extends RecyclerView.ViewHolder> ex
 	}
 ```
 
-&#160; &#160; &#160; &#160;整个功能到这就结束了，是不是很简单。最后贡献上源码[RecyclerPinnedHeader源码下载地址](https://github.com/tuacy/RecyclerPinnedHeader)
+&#160; &#160; &#160; &#160;整个功能到这就结束了，是不是很简单
