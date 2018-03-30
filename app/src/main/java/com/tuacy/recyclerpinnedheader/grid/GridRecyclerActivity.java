@@ -7,13 +7,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.tuacy.pinnedheader.PinnedHeaderItemDecoration;
+import com.tuacy.pinnedheader.PinnedHeaderRecyclerView;
 import com.tuacy.recyclerpinnedheader.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.widget.Toast.LENGTH_SHORT;
 import static com.tuacy.recyclerpinnedheader.grid.GridRecyclerAdapter.VIEW_TYPE_ITEM_TIME;
 
 
@@ -23,8 +26,8 @@ public class GridRecyclerActivity extends AppCompatActivity {
 		context.startActivity(new Intent(context, GridRecyclerActivity.class));
 	}
 
-	private RecyclerView mRecyclerView;
-	private Context      mContext;
+	private PinnedHeaderRecyclerView mRecyclerView;
+	private Context                  mContext;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +56,12 @@ public class GridRecyclerActivity extends AppCompatActivity {
 	}
 
 	private void initEvent() {
-
+		mRecyclerView.setOnPinnedHeaderClickListener(new PinnedHeaderRecyclerView.OnPinnedHeaderClickListener() {
+			@Override
+			public void onPinnedHeaderClick(int adapterPosition) {
+				Toast.makeText(mContext, "点击了悬浮标题 position = " + adapterPosition, LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	private void initData() {

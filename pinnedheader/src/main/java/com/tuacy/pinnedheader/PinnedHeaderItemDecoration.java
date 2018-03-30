@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 /**
  * PinnedHeader对应的ItemDecoration
  */
-public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
+public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration implements IPinnedHeaderDecoration {
+
+	private Rect mPinnedHeaderRect     = null;
+	private int  mPinnedHeaderPosition = -1;
 
 	/**
 	 * 把要固定的View绘制在上层
@@ -24,8 +27,10 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
 			View firstView = parent.getChildAt(0);
 			int firstAdapterPosition = parent.getChildAdapterPosition(firstView);
 			int pinnedHeaderPosition = getPinnedHeaderViewPosition(firstAdapterPosition, adapter);
+			mPinnedHeaderPosition = pinnedHeaderPosition;
 			if (pinnedHeaderPosition != -1) {
-				RecyclerView.ViewHolder pinnedHeaderViewHolder = adapter.onCreateViewHolder(parent, adapter.getItemViewType(pinnedHeaderPosition));
+				RecyclerView.ViewHolder pinnedHeaderViewHolder = adapter.onCreateViewHolder(parent,
+																							adapter.getItemViewType(pinnedHeaderPosition));
 				adapter.onBindViewHolder(pinnedHeaderViewHolder, pinnedHeaderPosition);
 				//要固定的view
 				View pinnedHeaderView = pinnedHeaderViewHolder.itemView;
@@ -46,6 +51,12 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
 				c.clipRect(0, 0, parent.getWidth(), pinnedHeaderView.getMeasuredHeight());
 				pinnedHeaderView.draw(c);
 				c.restoreToCount(saveCount);
+				if (mPinnedHeaderRect == null) {
+					mPinnedHeaderRect = new Rect();
+				}
+				mPinnedHeaderRect.set(0, 0, parent.getWidth(), pinnedHeaderView.getMeasuredHeight() + sectionPinOffset);
+			} else {
+				mPinnedHeaderRect = null;
 			}
 
 		}
@@ -90,5 +101,15 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration {
 			pinView.measure(widthSpec, heightSpec);
 			pinView.layout(0, 0, pinView.getMeasuredWidth(), pinView.getMeasuredHeight());
 		}
+	}
+
+	@Override
+	public Rect getPinnedHeaderRect() {
+		return mPinnedHeaderRect;
+	}
+
+	@Override
+	public int getPinnedHeaderPosition() {
+		return mPinnedHeaderPosition;
 	}
 }
