@@ -47,7 +47,11 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration impl
 					}
 				}
 				int saveCount = c.save();
-				c.translate(0, sectionPinOffset);
+				RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) pinnedHeaderView.getLayoutParams();
+				if (layoutParams == null) {
+					throw new NullPointerException("PinnedHeaderItemDecoration");
+				}
+				c.translate(layoutParams.leftMargin, sectionPinOffset);
 				c.clipRect(0, 0, parent.getWidth(), pinnedHeaderView.getMeasuredHeight());
 				pinnedHeaderView.draw(c);
 				c.restoreToCount(saveCount);
@@ -89,11 +93,15 @@ public class PinnedHeaderItemDecoration extends RecyclerView.ItemDecoration impl
 			/**
 			 * 用的是RecyclerView的宽度测量，和RecyclerView的宽度一样
 			 */
-			int widthSpec = View.MeasureSpec.makeMeasureSpec(recyclerView.getMeasuredWidth(), View.MeasureSpec.EXACTLY);
+			RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) pinView.getLayoutParams();
+			if (layoutParams == null) {
+				throw new NullPointerException("PinnedHeaderItemDecoration");
+			}
+			int widthSpec = View.MeasureSpec.makeMeasureSpec(
+				recyclerView.getMeasuredWidth() - layoutParams.leftMargin - layoutParams.rightMargin, View.MeasureSpec.EXACTLY);
 
 			int heightSpec;
-			ViewGroup.LayoutParams layoutParams = pinView.getLayoutParams();
-			if (layoutParams != null && layoutParams.height > 0) {
+			if (layoutParams.height > 0) {
 				heightSpec = View.MeasureSpec.makeMeasureSpec(layoutParams.height, View.MeasureSpec.EXACTLY);
 			} else {
 				heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);

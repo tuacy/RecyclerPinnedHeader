@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#074C79</color>
+    <color name="colorPrimaryDark">#074C79</color>
+    <color name="colorAccent">#33D8FD</color>
+
+    <color name="primary_text">#f7f7f7</color>
+    <color name="secondary_text">#33d8fd</color>
+    <color name="third_text">#cccccc</color>
+    <color name="navigationBarColor">#EBF5FE</color>
+    <color name="divider_color">#EEEEEE</color>
+    <color name="divider_color2">#0effffff</color>
+    <color name="ripple_color">#62B2B2B2</color>
+    <color name="activity_color">#EEEEEE</color>
+    <color name="disable_color">#afaca6</color>
+
+    <!-- 待受理 -->
+    <color name="order_state_waiting_reception">#ffb600</color>
+    <!-- 已派发 -->
+    <color name="order_state_distributed">#dbdb00</color>
+    <!-- 进行中 -->
+    <color name="order_state_progressing">#33d142</color>
+    <!-- 审核中 -->
+    <color name="order_state_auditing">#32dfef</color>
+    <!-- 已完成 -->
+    <color name="order_state_finished">#32dfef</color>
+    <!-- 未开始 -->
+    <color name="order_state_not_started">#ffb600</color>
+</resources>

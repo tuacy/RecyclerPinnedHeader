@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/RecyclerPinnedHeader.iml" filepath="$PROJECT_DIR$/RecyclerPinnedHeader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinnedheader/pinnedheader.iml" filepath="$PROJECT_DIR$/pinnedheader/pinnedheader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerexpand/recyclerexpand.iml" filepath="$PROJECT_DIR$/recyclerexpand/recyclerexpand.iml" />
     </modules>
   </component>
 </project>
