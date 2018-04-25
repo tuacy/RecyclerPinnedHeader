@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.tuacy.pinnedheader.PinnedHeaderItemDecoration;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
-import static com.tuacy.recyclerpinnedheader.grid.GridRecyclerAdapter.VIEW_TYPE_ITEM_TIME;
 
 
 public class GridRecyclerActivity extends AppCompatActivity {

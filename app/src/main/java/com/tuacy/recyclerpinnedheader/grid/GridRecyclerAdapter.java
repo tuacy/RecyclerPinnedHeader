@@ -11,9 +11,9 @@ import com.squareup.picasso.Picasso;
 import com.tuacy.pinnedheader.PinnedHeaderAdapter;
 import com.tuacy.recyclerpinnedheader.R;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GridRecyclerAdapter extends PinnedHeaderAdapter<RecyclerView.ViewHolder> {
 
